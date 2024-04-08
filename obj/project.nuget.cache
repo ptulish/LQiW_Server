@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "dE7c9Medyj56NsHJ3LAqtWGmGs4jr5rgcDtfwtiaxes8MHtmq25lEmni3i5WYnCX42A2inHu/wNTN0B6EoRrsg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\clientadmin\\Desktop\\Server\\LQiW_Server\\LQiW_Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.2\\microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.0-preview.2.24128.4\\microsoft.entityframeworkcore.9.0.0-preview.2.24128.4.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.0-preview.2.24128.4\\microsoft.entityframeworkcore.abstractions.9.0.0-preview.2.24128.4.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.0-preview.2.24128.4\\microsoft.entityframeworkcore.analyzers.9.0.0-preview.2.24128.4.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\9.0.0-preview.2.24128.4\\microsoft.entityframeworkcore.inmemory.9.0.0-preview.2.24128.4.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.0-preview.2.24128.4\\microsoft.entityframeworkcore.relational.9.0.0-preview.2.24128.4.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.0-preview.2.24128.5\\microsoft.extensions.caching.abstractions.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.0-preview.2.24128.5\\microsoft.extensions.caching.memory.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.0-preview.2.24128.5\\microsoft.extensions.configuration.abstractions.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.0-preview.2.24128.5\\microsoft.extensions.dependencyinjection.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.0-preview.2.24128.5\\microsoft.extensions.dependencyinjection.abstractions.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.logging\\9.0.0-preview.2.24128.5\\microsoft.extensions.logging.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.0-preview.2.24128.5\\microsoft.extensions.logging.abstractions.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.options\\9.0.0-preview.2.24128.5\\microsoft.extensions.options.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.0-preview.2.24128.5\\microsoft.extensions.primitives.9.0.0-preview.2.24128.5.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\npgsql\\8.0.2\\npgsql.8.0.2.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\9.0.0-preview.2\\npgsql.entityframeworkcore.postgresql.9.0.0-preview.2.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\clientadmin\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
