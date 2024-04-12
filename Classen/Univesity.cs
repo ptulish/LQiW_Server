@@ -11,5 +11,7 @@ public class Univesity
     public string Name { get; set; }
     public string Adresse { get; set; }
     public string Part { get; set; }
+    public double Latitude  { get; set; }
+    public double Longitude  { get; set; }
     public static int UniversityCount { get; set; }
 }

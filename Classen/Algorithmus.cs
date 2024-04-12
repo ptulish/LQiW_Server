@@ -51,4 +51,6 @@ public static class Algorithmus
             }
         }
     }
+    
+    public static int Count;
 }

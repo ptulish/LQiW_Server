@@ -44,9 +44,7 @@ public static class ConverterFromJSONToDB
 
         using (var db = new ApplicationContext())
         {
-            
             var entries = db.PublicTransportStops.ToList();
-    
             db.PublicTransportStops.RemoveRange(entries);
             db.SaveChanges();
 
@@ -63,7 +61,6 @@ public static class ConverterFromJSONToDB
                 db.PublicTransportStops.Add(publicTransportStop);
                 publicTransportStops.Add(publicTransportStop);
             }
-
             db.SaveChanges();
             PublicTransportStop.PublicTransportStopsCount = publicTransportStops.Count;
         }
@@ -78,26 +75,24 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.Universities.ToList();
-    
             db.Universities.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
-
-
                 string name = (string)item["properties"]["NAME"];
                 string address = (string)item["properties"]["ADRESSE"];
                 string part = (string)item["properties"]["BEZEICHNUNG"];
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 
                 Univesity univesity = new Univesity()
                 {
-                    Name = name, Adresse = address, Part = part
+                    Name = name, Adresse = address, Part = part,Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
                 db.Universities.Add(univesity);
                 universities.Add(univesity);
                 uniNames.Add(name);
             }
-
             db.SaveChanges();
             Univesity.UniversityCount = universities.Count;
         }
@@ -111,21 +106,21 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.Schools.ToList();
-    
             db.Schools.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 string name = (string)item["properties"]["NAME"];
                 string addresse = (string)item["properties"]["ADRESSE"];
                 School school = new School()
                 {
-                    Name = name, Adresse = addresse,
+                    Name = name, Adresse = addresse, Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
                 db.Schools.Add(school);
                 schools.Add(school);
             }
-
             db.SaveChanges();
             School.SchoolsCount = schools.Count;
         }
@@ -139,22 +134,22 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.Pools.ToList();
-    
             db.Pools.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 string name = (string)item["properties"]["NAME"];
                 string address = (string)item["properties"]["ADRESSE"];
 
                 Pool pool = new Pool()
                 {
-                    Name = name, Adresse = address
+                    Name = name, Adresse = address, Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
                 db.Pools.Add(pool);
                 pools.Add(pool);
             }
-
             db.SaveChanges();
             Pool.PoolsCount = pools.Count;
         }
@@ -168,22 +163,22 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.PoliceStations.ToList();
-    
             db.PoliceStations.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 string name = (string)item["properties"]["NAME"];
                 string addresse = (string)item["properties"]["ADRESSE"];
 
                 PoliceStation policeStation = new PoliceStation()
                 {
-                    Name = name, Adresse = addresse
+                    Name = name, Adresse = addresse, Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
                 db.PoliceStations.Add(policeStation);
                 policeStations.Add(policeStation);
             }
-
             db.SaveChanges();
             PoliceStation.PolicestationCount = policeStations.Count;
         }
@@ -197,9 +192,9 @@ public static class ConverterFromJSONToDB
         using (var db  = new ApplicationContext())
         {
             var entries = db.Parks.ToList();
-    
             db.Parks.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
                 string name = (string)item["properties"]["ANL_NAME"];
@@ -207,7 +202,6 @@ public static class ConverterFromJSONToDB
                 string square1 = (string)item["properties"]["FLAECHE"];
                 string[] hi = square1.Split(" ");
                 double square = Convert.ToDouble(hi[0]);
-
                 bool forChildren = (string)item["properties"]["SPIELEN_IM_PARK"] == "Ja";
                 bool drink = (string)item["properties"]["WASSER_IM_PARK"] == "Ja";
                 bool dogs = (string)item["properties"]["HUNDE_IM_PARK"] == "Ja";
@@ -219,7 +213,6 @@ public static class ConverterFromJSONToDB
                 db.Parks.Add(park);
                 parks.Add(park);
             }
-
             db.SaveChanges();
             Park.ParkCount = parks.Count;
         }
@@ -233,22 +226,22 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.MusikSchools.ToList();
-    
             db.MusikSchools.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 string name = (string)item["properties"]["NAME"];
                 string address = (string)item["properties"]["ADRESSE"];
 
                 MusikSchool musikSchool = new MusikSchool()
                 {
-                    Name = name, Adresse = address
+                    Name = name, Adresse = address, Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
                 db.MusikSchools.Add(musikSchool);
                 musikSchools.Add(musikSchool);
             }
-
             db.SaveChanges();
             MusikSchool.MusikSchoolsCount = musikSchools.Count;
         }
@@ -259,26 +252,25 @@ public static class ConverterFromJSONToDB
         List<Museum> museums = new List<Museum>();
         var data = JObject.Parse(json);
         
-
         using (var db = new ApplicationContext())
         {
             var entries = db.Museums.ToList();
-    
             db.Museums.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
                 string name = (string)item["properties"]["NAME"];
                 string address = (string)item["properties"]["ADRESSE"];
-
+                var coordinates = (JArray)item["geometry"]["coordinates"];
+                
                 Museum museum = new Museum()
                 {
-                    Name = name, Adresse = address
+                    Name = name, Adresse = address, Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
                 db.Museums.Add(museum);
                 museums.Add(museum);
             }
-
             db.SaveChanges();
             Museum.MuseumsCount = museums.Count;
         }
@@ -289,26 +281,26 @@ public static class ConverterFromJSONToDB
     {
         List<Kindergarden> kindergardens = new List<Kindergarden>();
         var data = JObject.Parse(json);
-
+        
         using (var db = new ApplicationContext())
         {
             var entries = db.Kindergardens.ToList();
-    
             db.Kindergardens.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 string name = (string)item["properties"]["BETREIBER"];
                 string adress = (string)item["properties"]["ADRESSE"];
 
                 Kindergarden kindergarden = new Kindergarden()
                 {
-                    Owner = name, Adresse = adress
+                    Owner = name, Adresse = adress, Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
                 db.Kindergardens.Add(kindergarden);
                 kindergardens.Add(kindergarden);
             }
-
             db.SaveChanges();
             Kindergarden.KinderGardenCount = kindergardens.Count;
         }
@@ -322,22 +314,22 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.Bibliotheks.ToList();
-    
             db.Bibliotheks.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 string name = (string)item["properties"]["NAME"];
                 string address = (string)item["properties"]["ADRESSE"];
 
                 Bibliothek bibliothek = new Bibliothek()
                 {
-                    Name = name, Adresse = address
+                    Name = name, Adresse = address, Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
                 bibliotheks.Add(bibliothek);
                 db.Bibliotheks.Add(bibliothek);
             }
-
             db.SaveChanges();
             Bibliothek.BibliothekCount = bibliotheks.Count;
         }
@@ -351,22 +343,24 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.Clinics.ToList();
-    
             db.Clinics.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 string name = (string)item["properties"]["BEZEICHNUNG"];
                 string adress = (string)item["properties"]["ADRESSE"];
                 Clinic clinic = new Clinic()
                 {
                     Name = name,
+                    Latitude = (double)coordinates[1],
+                    Longitude = (double)coordinates[0],
                     Adresse = adress
                 };
                 clinics.Add(clinic);
                 db.Clinics.Add(clinic);
             }
-
             db.SaveChanges();
             Clinic.ClinicCount = clinics.Count;
         }
@@ -379,9 +373,9 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.DisParks.ToList();
-    
             db.DisParks.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
                 var streetName = (string)item["properties"]["STRNAM"];
@@ -391,18 +385,16 @@ public static class ConverterFromJSONToDB
                 DisPark disPark = new DisPark()
                 {
                     StreetName = streetName,
-                    Latitude = (double)coordinates[1], // Breitengrad
-                    Longitude = (double)coordinates[0], // Längengrad
+                    Latitude = (double)coordinates[1],
+                    Longitude = (double)coordinates[0],
                     ParkCount = parksCount
                 };
                 DisParkings.Add(disPark);
                 db.DisParks.Add(disPark);
-
             }
             db.SaveChanges();
+            DisPark.ParkCountInCity = DisParkings.Count;
         }
-
-        DisPark.ParkCountInCity = DisParkings.Count;
     }
     static void SaveDoctorInformation(string json)
     {
@@ -412,9 +404,9 @@ public static class ConverterFromJSONToDB
         using (var db = new ApplicationContext())
         {
             var entries = db.Doctors.ToList();
-    
             db.Doctors.RemoveRange(entries);
             db.SaveChanges();
+            
             foreach (var item in data["features"])
             {
                 if ((string)item["properties"]["FACH"] != "Allgemeinmedizin")
@@ -423,30 +415,19 @@ public static class ConverterFromJSONToDB
                     continue;
                 else
                     Doctors.Add((string)item["properties"]["NAME"]);
-            
-                string name = (string)item["properties"]["NAME"];
-                string address = (string)item["properties"]["ADRESSE"];
+                var coordinates = (JArray)item["geometry"]["coordinates"];
                 
                 Doctor doc = new Doctor()
                 {
                     Name = (string)item["properties"]["NAME"],
+                    Latitude = (double)coordinates[1],
+                    Longitude = (double)coordinates[0],
                     Adresse = (string)item["properties"]["ADRESSE"]
                 };
                 db.Doctors.Add(doc);
             }
             db.SaveChanges();
+            Doctor.DoctorCount = Doctors.Count;
         }
-        
-
-        Console.WriteLine(Doctors.Count);
-        Doctor.DoctorCount = Doctors.Count;
-        // using (var db = new ApplicationContext())
-        // {
-        //     foreach (var einrichtung in db.Doctors)
-        //     {
-        //         Console.WriteLine($"ID: {einrichtung.Id}. Name: {einrichtung.Name}, Adresse: {einrichtung.Adresse}");
-        //     }
-        // }
     }
-
 }

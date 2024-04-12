@@ -11,4 +11,6 @@ public class Kindergarden
     public string Owner { get; set; }
     public string Adresse { get; set; }
     public static int KinderGardenCount;
+    public double Latitude  { get; set; }
+    public double Longitude  { get; set; }
 }

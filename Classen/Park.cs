@@ -15,5 +15,6 @@ public class Park
     public bool ForChildren { get; set; }
     public bool Drink { get; set; }
     public bool Dogs { get; set; }
+    
     public static int ParkCount;
 }

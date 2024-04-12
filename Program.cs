@@ -5,6 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Füge dies hinzu, um Unterstützung für Controller hinzuzufügen
 builder.Services.AddControllers();
 
+//function to update the jsons from opendata (has to be downloaded into the OpenData folder
+//ConverterFromJSONToDB.startSave();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -14,6 +17,7 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
     });
 });
+
 
 var app = builder.Build();
 

@@ -11,4 +11,6 @@ public class Doctor
     public string Name { get; set; }
     public string Adresse { get; set; }
     public static int DoctorCount;
+    public double Latitude  { get; set; }
+    public double Longitude  { get; set; }
 }

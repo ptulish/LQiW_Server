@@ -11,4 +11,6 @@ public class MusikSchool
     public string Name { get; set; }
     public string Adresse { get; set; }
     public static int MusikSchoolsCount { get; set; }
+    public double Latitude  { get; set; }
+    public double Longitude  { get; set; }
 }

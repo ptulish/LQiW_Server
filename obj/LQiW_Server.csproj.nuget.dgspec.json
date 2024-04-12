@@ -53,6 +53,10 @@
               "target": "Package",
               "version": "[9.0.0-preview.2.24128.4, )"
             },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[9.0.0-preview.3.24172.9, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"

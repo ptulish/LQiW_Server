@@ -11,4 +11,6 @@ public class Museum
     public string Name { get; set; }
     public string Adresse { get; set; }
     public static int MuseumsCount;
+    public double Latitude  { get; set; }
+    public double Longitude  { get; set; }
 }
