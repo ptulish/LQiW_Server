@@ -14,5 +14,5 @@ public class Nearests
     public List<Pool> Pools = new List<Pool>();
     public List<PublicTransportStop> PublicTransportStops = new List<PublicTransportStop>();
     public List<School> Schools = new List<School>();
-    public List<Univesity> Univesities = new List<Univesity>();
+    public List<University> Univesities = new List<University>();
 }

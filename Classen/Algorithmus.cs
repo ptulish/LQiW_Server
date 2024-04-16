@@ -40,16 +40,6 @@ public static class Algorithmus
             }
             db.SaveChanges();
         }
-        
-
-        Console.WriteLine(Clinics.Count);
-        using (var db = new ApplicationContext())
-        {
-            foreach (var einrichtung in db.Doctors)
-            {
-                Console.WriteLine($"ID: {einrichtung.Id}. Name: {einrichtung.Name}, Adresse: {einrichtung.Adresse}");
-            }
-        }
     }
     
     public static int Count;

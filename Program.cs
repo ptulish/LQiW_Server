@@ -1,4 +1,5 @@
 using LQiW_Server.Classen;
+using LQiW_Server.OpenData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,13 +34,6 @@ app.UseCors();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers(); // Registriert Controller-Endpoints
-    using (var db = new ApplicationContext())
-    {
-        foreach (var einrichtung in db.Clinics)
-        {
-            Console.WriteLine($"ID: {einrichtung.Id}. Name: {einrichtung.Name}, Adresse: {einrichtung.Adresse}");
-        }
-    }
 });
 
 app.Run();

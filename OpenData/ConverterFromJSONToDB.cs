@@ -36,7 +36,7 @@ public static class ConverterFromJSONToDB
         json = File.ReadAllText("OpenData/OEFFHALTESTOGD.json");
         SavePublicTransportStop(json);
     }
-
+    
     static void SavePublicTransportStop(string json)
     {
         List<PublicTransportStop> publicTransportStops = new List<PublicTransportStop>();
@@ -58,6 +58,11 @@ public static class ConverterFromJSONToDB
                 {
                     Name = name, Lines = lines, Longitude = (double)coordinates[0], Latitude = (double)coordinates[1]
                 };
+
+                if (publicTransportStops.Contains(publicTransportStop))
+                {
+                    continue;
+                }
                 db.PublicTransportStops.Add(publicTransportStop);
                 publicTransportStops.Add(publicTransportStop);
             }
@@ -68,7 +73,7 @@ public static class ConverterFromJSONToDB
 
     static void SaveUniversityInformation(string json)
     {
-        List<Univesity> universities = new List<Univesity>();
+        List<University> universities = new List<University>();
         List<string> uniNames = new List<string>();
         var data = JObject.Parse(json);
 
@@ -85,16 +90,16 @@ public static class ConverterFromJSONToDB
                 string part = (string)item["properties"]["BEZEICHNUNG"];
                 var coordinates = (JArray)item["geometry"]["coordinates"];
                 
-                Univesity univesity = new Univesity()
+                University university = new University()
                 {
                     Name = name, Adresse = address, Part = part,Latitude = (double)coordinates[1], Longitude = (double)coordinates[0],
                 };
-                db.Universities.Add(univesity);
-                universities.Add(univesity);
+                db.Universities.Add(university);
+                universities.Add(university);
                 uniNames.Add(name);
             }
             db.SaveChanges();
-            Univesity.UniversityCount = universities.Count;
+            University.UniversityCount = universities.Count;
         }
     }
 

@@ -18,7 +18,7 @@ public class ApplicationContext : DbContext
     public DbSet<Pool> Pools { get; set; }
     public DbSet<PublicTransportStop> PublicTransportStops { get; set; }
     public DbSet<School> Schools { get; set; }
-    public DbSet<Univesity> Universities { get; set; }
+    public DbSet<University> Universities { get; set; }
     
     
     public ApplicationContext()
@@ -34,11 +34,7 @@ public class ApplicationContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             var connectionString = "Host=localhost;Port=5432;Username=postgres;Password=2218;Database=LQiW_DB;";
-
-            Console.WriteLine("Current connection string: " + connectionString);
-
             optionsBuilder.UseNpgsql(connectionString);
-            
         }
     }
 }

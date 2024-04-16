@@ -13,4 +13,10 @@ public class Bibliothek
     public double Latitude  { get; set; }
     public double Longitude  { get; set; }
     public static int BibliothekCount;
+    
+    public static double CalculateAverageRatingBibliothek(List<(Bibliothek bibliothek, double distance)> bibliotheks)
+    {
+        var ratings = bibliotheks.Select(b => CalculateRating.CalculateRating500(b.distance)).ToList();
+        return ratings.Average();
+    }
 }

@@ -13,4 +13,9 @@ public class MusikSchool
     public static int MusikSchoolsCount { get; set; }
     public double Latitude  { get; set; }
     public double Longitude  { get; set; }
+    public static double CalculateAverageRatingMusikSchool(List<(MusikSchool musikSchool, double distance)> musikSchools)
+    {
+        var ratings = musikSchools.Select(b => CalculateRating.CalculateRating200(b.distance)).ToList();
+        return ratings.Average();
+    }
 }

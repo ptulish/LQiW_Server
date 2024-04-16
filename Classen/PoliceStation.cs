@@ -13,4 +13,9 @@ public class PoliceStation
     public double Latitude  { get; set; }
     public double Longitude  { get; set; }
     public static int PolicestationCount;
+    public static double CalculateAverageRatingPoliceStation(List<(PoliceStation policeStation, double distance)> policeStations)
+    {
+        var ratings = policeStations.Select(b => CalculateRating.CalculateRating200(b.distance)).ToList();
+        return ratings.Average();
+    }
 }

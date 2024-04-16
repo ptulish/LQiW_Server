@@ -13,4 +13,9 @@ public class DisPark
     public string StreetName { get; set; }
     public int ParkCount { get; set; }
     public static int ParkCountInCity;
+    public static double CalculateAverageRatingDisPark(List<(DisPark disPark, double distance)> disParks)
+    {
+        var ratings = disParks.Select(b => CalculateRating.CalculateRating30(b.distance)).ToList();
+        return ratings.Average();
+    }
 }

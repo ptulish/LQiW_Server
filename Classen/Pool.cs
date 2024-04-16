@@ -13,4 +13,9 @@ public class Pool
     public double Latitude  { get; set; }
     public double Longitude  { get; set; }
     public static int PoolsCount;
+    public static double CalculateAverageRatingPool(List<(Pool pool, double distance)> pools)
+    {
+        var ratings = pools.Select(b => CalculateRating.CalculateRating500(b.distance)).ToList();
+        return ratings.Average();
+    }
 }

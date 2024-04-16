@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace LQiW_Server.Classen;
 
-public class Univesity
+public class University
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -14,4 +14,10 @@ public class Univesity
     public double Latitude  { get; set; }
     public double Longitude  { get; set; }
     public static int UniversityCount { get; set; }
+    public static double CalculateAverageRatingUniversity(List<(University university, double distance)> universities)
+    {
+        var ratings = universities.Select(b => CalculateRating.CalculateRating200(b.distance)).ToList();
+        return ratings.Average();
+    }
+
 }

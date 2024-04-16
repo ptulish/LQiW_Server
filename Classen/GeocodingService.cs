@@ -37,7 +37,6 @@ namespace LQiW_Server.Classen
                     JArray addrComp = (JArray)firstItem["address_components"];
                     foreach (var adressComp in addrComp)
                     {
-                        Console.WriteLine(adressComp["types"][0].ToString());
                         if (adressComp["types"][0].ToString()=="political")
                         {
                             district = adressComp["long_name"].ToString();
@@ -49,28 +48,22 @@ namespace LQiW_Server.Classen
                         if (adressComp["types"][0].ToString()=="postal_code")
                         {
                             postcode = Convert.ToInt32(adressComp["short_name"]);
-
                         }
                     }
 
-                    if (country != "AT")
+                    if ((country != "AT") || (postcode < 1000 || postcode > 1230))
                     {
-                        Response.StatusCode = 409;
-                        throw new Exception("Address is not in austria");
+                        throw new Exception("notAT");
                     }
-
-                    if (postcode < 1000 || postcode > 1230)
-                    {
-                        Response.StatusCode = 409;
-                        throw new Exception("Address is not in Vienna");
-                    }
+                    
                     var details = new UserLocation()
                     {
                         Latitude = latitude,
                         Longitude = longitude,
                         FormattedAddress = formattedAddress,
                         Country = country,
-                        PostalCode = postcode
+                        PostalCode = postcode,
+                        District = district,
                     };
                     return details;
                 }

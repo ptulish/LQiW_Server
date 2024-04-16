@@ -13,4 +13,9 @@ public class Museum
     public static int MuseumsCount;
     public double Latitude  { get; set; }
     public double Longitude  { get; set; }
+    public static double CalculateAverageRatingMuseum(List<(Museum museum, double distance)> museums)
+    {
+        var ratings = museums.Select(b => CalculateRating.CalculateRating500(b.distance)).ToList();
+        return ratings.Average();
+    }
 }

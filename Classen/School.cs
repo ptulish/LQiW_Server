@@ -14,4 +14,10 @@ public class School
     public double Longitude  { get; set; }
 
     public static int SchoolsCount;
+    
+    public static double CalculateAverageRatingSchool(List<(School school, double distance)> schools)
+    {
+        var ratings = schools.Select(b => CalculateRating.CalculateRating100(b.distance)).ToList();
+        return ratings.Average();
+    }
 }

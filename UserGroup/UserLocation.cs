@@ -7,4 +7,5 @@ public class UserLocation
     public string Country { get; set; }
     public int PostalCode { get; set; }
     public string FormattedAddress { get; set; }
+    public string District { get; set; }
 }

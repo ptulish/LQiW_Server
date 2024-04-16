@@ -1,9 +1,12 @@
-﻿using LQiW_Server.Classen;
+﻿using System.Runtime.InteropServices.JavaScript;
+using System.Security.Cryptography.X509Certificates;
+using LQiW_Server.Classen;
 using LQiW_Server.OpenData;
 using LQiW_Server.UserGroup;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting.Internal;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LQiW_Server.Controllers;
 
@@ -14,60 +17,60 @@ public class DataController :  ControllerBase
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] dynamic data)
     {
+        RatingResponse ratingResponse = new RatingResponse();
         var httpClient = new HttpClient();
         GeocodingService geocodingService = new GeocodingService(httpClient, "AIzaSyAjk0lcOnuSDT6IpuikBvZJTOjWISWALIs");
         MessageFromClient messageFromClient = JsonConvert.DeserializeObject<MessageFromClient>(data.ToString());
         messageFromClient.ParseAddress();
-
+        ratingResponse.Address = messageFromClient.Address;
+        
+        
+        
         try
         {
             UserLocation userLocation= await geocodingService.GetLocationDetailsFromAddress(messageFromClient.Address);
-            if (Controllers.Response.StatusCode == 409)
-            {
-                return BadRequest();
-            }
-
-            List<Bibliothek> Bibliotheks = new List<Bibliothek>();
-            using (var db = new ApplicationContext())
-            {
-                Bibliotheks = db.Bibliotheks.ToList();
-            }
-
-            var nearestBibliotheks = LocationFinder.FindNearestLibraries(userLocation.Latitude,
-                userLocation.Longitude, Bibliotheks, 5);
-            List<Clinic> clinics = new List<Clinic>();
-            using (var db = new ApplicationContext())
-            {
-                clinics = db.Clinics.ToList();
-            }
-            var nearestClinic = LocationFinder.FindNearestClinics(userLocation.Latitude, userLocation.Longitude, clinics, 5);
-            
-            foreach (var (hospital, distance) in nearestClinic)
-            {
-                Console.WriteLine($"ID: {hospital.Id}, Name: {hospital.Name}, Address: {hospital.Adresse}, Distance: {distance:F2} km");
-            }
-
-            foreach (var (library, distance) in nearestBibliotheks)
-            {
-                Console.WriteLine($"ID: {library.Id}, Name: {library.Name}, Address: {library.Adresse}, Distance: {distance:F2} km");
-            }
+            ratingResponse.DistrictName = userLocation.District;
             if (messageFromClient.UserGroup == "alone")
             {
-                Console.WriteLine($"Formatted Address: {userLocation.FormattedAddress}");
-                Console.WriteLine($"Latitude: {userLocation.Latitude}, Longitude: {userLocation.Longitude}");
-                Console.WriteLine($"Country: {userLocation.Country}, Postal Code: {userLocation.PostalCode}");
+                Alone alone = new Alone(userLocation, ratingResponse);
+            }
+
+            switch (messageFromClient.UserGroup)
+            {
+                case "alone":
+                    Alone alone = new Alone(userLocation, ratingResponse);
+                    break;
+                case "family":
+                    Family family = new Family(userLocation, ratingResponse);
+                    break;
+                case "student":
+                    Student student = new Student(userLocation, ratingResponse);
+                    break;
+                case "young-couple":
+                    YoungCouple youngCouple = new YoungCouple(userLocation, ratingResponse);
+                    break;
+                case "pensioneur":
+                    Pension pension = new Pension(userLocation, ratingResponse);
+                    break;
+                case "invalid":
+                    Disabled disabled = new Disabled(userLocation, ratingResponse);
+                    break;
+                default:
+                    return StatusCode(402);
+                    
             }
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
+            if (e.Message == "notAT")
+            {
+                return StatusCode(405, "Address is not in Vienna");
+            } 
             throw;
         }
-        
-        
-        var responseMessage = $"Hall von Server{Algorithmus.Count}";
         Algorithmus.Count++;
         // Gebe die Nachricht als Antwort zurück
-        return Content(responseMessage, "text/plain");
+        return Ok(ratingResponse);
     }
 }

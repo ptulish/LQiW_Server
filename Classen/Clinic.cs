@@ -13,4 +13,9 @@ public class Clinic
     public double Latitude  { get; set; }
     public double Longitude  { get; set; }
     public static int ClinicCount;
+    public static double CalculateAverageRatingClinic(List<(Clinic clinic, double distance)> clinics)
+    {
+        var ratings = clinics.Select(b => CalculateRating.CalculateRating500(b.distance)).ToList();
+        return ratings.Average();
+    }
 }
