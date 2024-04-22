@@ -10,6 +10,51 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LQiW_Server.Controllers;
 
+
+[Route("api/[controller]")]
+[ApiController]
+public class FeedbacksController : ControllerBase
+{
+    [HttpGet]
+    public ActionResult GetFeedback()
+    {
+        using (var context = new ApplicationContext())
+        {
+            if (context.Feedbacks.Count() == 0)
+            {
+                return StatusCode(209, "Keine Feedbacks");
+            }
+            else
+            {
+                return Ok(JsonConvert.SerializeObject(context.Feedbacks));
+            }
+        }
+        
+        return Ok("this is get feedback");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> PostAsync([FromBody] dynamic data)
+    {
+        Console.WriteLine(data);
+        return Ok("post feedback");
+    }
+}
+
+[Route("api/[controller]")]
+[ApiController]
+public class StatsController : ControllerBase
+{
+    [HttpGet]
+    public ActionResult GetStats()
+    {
+        StatsResponse statsResponse = new StatsResponse();
+        statsResponse.SaveCounts();
+        var response = JsonConvert.SerializeObject(statsResponse);
+        return Ok(response);
+    }
+}
+
 [Route("api/[controller]")]
 [ApiController]
 public class DataController :  ControllerBase
@@ -70,7 +115,8 @@ public class DataController :  ControllerBase
             throw;
         }
         Algorithmus.Count++;
+        var response = JsonConvert.SerializeObject(ratingResponse);
         // Gebe die Nachricht als Antwort zurück
-        return Ok(ratingResponse);
+        return Ok(response);
     }
 }

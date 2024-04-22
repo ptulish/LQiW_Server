@@ -38,7 +38,7 @@ public class Family
         var nearestPools = LocationFinder.FindNearestPools(userLocation.Latitude, userLocation.Longitude, pools, count);
         var nearestStops = LocationFinder.FindNearestPublicTransportStops(userLocation.Latitude, userLocation.Longitude, publicTransportStops, count);
         var nearestSchools = LocationFinder.FindNearestSchools(userLocation.Latitude, userLocation.Longitude, schools, count);
-        var nearestUniversities = LocationFinder.FindNearestUniversities(userLocation.Latitude, userLocation.Longitude, universities, 3);
+        var nearestUniversities = LocationFinder.FindNearestUniversities(userLocation.Latitude, userLocation.Longitude, universities, 1);
         
         ratingResponse.SaveRating("fammily", nearestBibliotheks, nearestClinic, nearestParkings, nearestDoctors, nearestKindergartens, nearestMuseums, nearestMusicSchools, nearestParks, nearestPoliceStations, nearestPools, nearestStops, nearestSchools, nearestUniversities);
 

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LQiW_Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+10daa003e3d951f9ba5383998ae9c87c60432eaf")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05963db879e00ed3b6721dfb02c16efb04d4c037")]
 [assembly: System.Reflection.AssemblyProductAttribute("LQiW_Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LQiW_Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

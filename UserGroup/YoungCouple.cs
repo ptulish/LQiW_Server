@@ -38,7 +38,7 @@ public class YoungCouple
         var nearestPools = LocationFinder.FindNearestPools(userLocation.Latitude, userLocation.Longitude, pools, 3);
         var nearestStops = LocationFinder.FindNearestPublicTransportStops(userLocation.Latitude, userLocation.Longitude, publicTransportStops, 8);
         var nearestSchools = LocationFinder.FindNearestSchools(userLocation.Latitude, userLocation.Longitude, schools, 2);
-        var nearestUniversities = LocationFinder.FindNearestUniversities(userLocation.Latitude, userLocation.Longitude, universities, 3);
+        var nearestUniversities = LocationFinder.FindNearestUniversities(userLocation.Latitude, userLocation.Longitude, universities, 2);
 
         ratingResponse.SaveRating("couple", nearestBibliotheks, nearestClinic, nearestParkings, nearestDoctors, nearestKindergartens, nearestMuseums, nearestMusicSchools, nearestParks, nearestPoliceStations, nearestPools, nearestStops, nearestSchools, nearestUniversities);
 

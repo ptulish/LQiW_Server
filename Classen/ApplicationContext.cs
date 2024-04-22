@@ -19,6 +19,7 @@ public class ApplicationContext : DbContext
     public DbSet<PublicTransportStop> PublicTransportStops { get; set; }
     public DbSet<School> Schools { get; set; }
     public DbSet<University> Universities { get; set; }
+    public DbSet<Feedback> Feedbacks { get; set; }
     
     
     public ApplicationContext()
