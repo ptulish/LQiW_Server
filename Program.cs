@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 //function to update the jsons from opendata (has to be downloaded into the OpenData folder
-// ConverterFromJSONToDB.startSave();
+ConverterFromJSONToDB.startSave();
 
 builder.Services.AddCors(options =>
 {
