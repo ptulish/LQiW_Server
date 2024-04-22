@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.NetworkInformation;
 using LQiW_Server.Classen;
 using LQiW_Server.OpenData;
 
@@ -54,6 +56,16 @@ using (var db = new ApplicationContext())
         Console.WriteLine("DB is empty... filling...");
         //function to update the jsons from opendata (has to be downloaded into the OpenData folder
         ConverterFromJSONToDB.startSave();
+    }
+
+    Console.WriteLine("Check over");
+    Console.WriteLine("Aktive TCP-Listener:");
+    IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+    IPEndPoint[] tcpListeners = ipProperties.GetActiveTcpListeners();
+
+    foreach (var listener in tcpListeners)
+    {
+        Console.WriteLine($"Hört auf: {listener.Address} Port: {listener.Port}");
     }
 
     Console.WriteLine("Check over");
