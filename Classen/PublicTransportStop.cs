@@ -20,7 +20,6 @@ public class PublicTransportStop
         List<(PublicTransportStop publicTransportStop, double distance)> publicTransportStops, List<string> list,
         List<string> linesKm)
     {
-        List<string> lines1 = new List<string>();
         var ratings = publicTransportStops.Select(b =>
         {
             var rating = (double)CalculateRating.CalculateRating30(b.distance);
@@ -46,11 +45,11 @@ public class PublicTransportStop
                 {
                     rating += 1;
                 }
-                else if (line.StartsWith("N")) // Проверка на начало строки с 'N'
+                else if (line.StartsWith("N")) 
                 {
                     rating += 0.8;
                 }
-                else if (char.IsDigit(line[0])) // Проверка, является ли первый символ цифрой
+                else if (char.IsDigit(line[0]))
                 {
                     rating += 0.2;
                 }

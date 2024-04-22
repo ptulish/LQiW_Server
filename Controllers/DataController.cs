@@ -29,8 +29,6 @@ public class FeedbacksController : ControllerBase
                 return Ok(JsonConvert.SerializeObject(context.Feedbacks));
             }
         }
-        
-        return Ok("this is get feedback");
     }
 
     [HttpPost]
@@ -114,9 +112,7 @@ public class DataController :  ControllerBase
             } 
             throw;
         }
-        Algorithmus.Count++;
         var response = JsonConvert.SerializeObject(ratingResponse);
-        // Gebe die Nachricht als Antwort zurück
         return Ok(response);
     }
 }

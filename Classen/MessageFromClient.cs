@@ -17,7 +17,7 @@ public class MessageFromClient
         }
         else
         {
-            Street = Address.Trim(); // Default to entire address as street if no number is found
+            Street = Address.Trim();
             HouseNumber = 0;
         }
     }

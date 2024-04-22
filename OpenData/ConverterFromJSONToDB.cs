@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Globalization;
+using System.Net;
 using LQiW_Server.Classen;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
@@ -206,7 +207,7 @@ public static class ConverterFromJSONToDB
                 var coordinates = (JArray)item["geometry"]["coordinates"];
                 string square1 = (string)item["properties"]["FLAECHE"];
                 string[] hi = square1.Split(" ");
-                double square = Convert.ToDouble(hi[0]);
+                double square = double.Parse(hi[0],  CultureInfo.InvariantCulture);
                 bool forChildren = (string)item["properties"]["SPIELEN_IM_PARK"] == "Ja";
                 bool drink = (string)item["properties"]["WASSER_IM_PARK"] == "Ja";
                 bool dogs = (string)item["properties"]["HUNDE_IM_PARK"] == "Ja";

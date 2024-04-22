@@ -48,7 +48,7 @@ public class CalculateRating
             totalWeight += weights[i];
         }
 
-        if (totalWeight == 0) return 0; // Предотвращение деления на ноль
+        if (totalWeight == 0) return 0;
 
         return sumProduct / totalWeight;
     }
