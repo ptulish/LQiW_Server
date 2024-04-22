@@ -34,7 +34,7 @@ public class ApplicationContext : DbContext
     {
         if (!optionsBuilder.IsConfigured)
         {
-            var connectionString = "Host=localhost;Port=5432;Username=postgres;Password=2218;Database=LQiW_DB;";
+            var connectionString = "Host=db;Port=5432;Username=postgres;Password=2218;Database=LQiW_DB;";
             optionsBuilder.UseNpgsql(connectionString);
         }
     }
