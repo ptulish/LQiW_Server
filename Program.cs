@@ -5,8 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-//function to update the jsons from opendata (has to be downloaded into the OpenData folder
-ConverterFromJSONToDB.startSave();
 
 builder.Services.AddCors(options =>
 {
@@ -46,5 +44,20 @@ app.UseEndpoints(endpoints =>
 });
 
 app.MapControllers();
+
+
+using (var db = new ApplicationContext())
+{
+    Console.WriteLine("Checking Database");
+    if (db.Bibliotheks.Count() == 0)
+    {
+        Console.WriteLine("DB is empty... filling...");
+        //function to update the jsons from opendata (has to be downloaded into the OpenData folder
+        ConverterFromJSONToDB.startSave();
+    }
+
+    Console.WriteLine("Check over");
+}
+
 
 app.Run();

@@ -68,6 +68,7 @@ public class Alone
 
     private void LoadInfoFromDB()
     {
+        
         using (var db = new ApplicationContext())
         {
             bibliotheks = db.Bibliotheks.ToList();
